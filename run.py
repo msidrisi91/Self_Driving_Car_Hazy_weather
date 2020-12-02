@@ -46,12 +46,12 @@ while(cv2.waitKey(10) != ord('q') and i<45000):
 	img1 = cv2.imread(path + str(i) + ".jpg", 1)
 	# img1 = image.load_img(path + str(i) + ".jpg",color_mode='rgb')
 	cv2.imshow("frame", cv2.cvtColor(img1, cv2.COLOR_RGB2BGR))
-	img1 = dehaze.dehaze(img1)[..., ::-1].astype(np.float32)
+	img = dehaze.dehaze(img1)[..., ::-1].astype(np.float32)
 
-	img1 = image.image.img_to_array(img1) / 255.0
+	img1 = image.image.img_to_array(img) / 255.0
 	cv2.imshow("dehazed", cv2.cvtColor(img1, cv2.COLOR_RGB2BGR))
 
-	# img = cv2.resize(img1, (/200, 66))[..., ::-1].astype(np.float32)
+	# img = cv2.resize(img1, (66, 200))[..., ::-1].astype(np.float32)
 	img = image.load_img(path + str(i) + ".jpg", color_mode='rgb', target_size=[66, 200])
 	img = image.img_to_array(img)/255.0
 	img_resh = np.reshape(img, [1, 66, 200, 3])
